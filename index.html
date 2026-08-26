@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalakruti With Me – Handmade Woolen Rangoli</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fcf7f0;
+            color: #3d2c1e;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- HEADER / NAV ----- */
+        header {
+            background: #fff8f0;
+            padding: 16px 0;
+            border-bottom: 1px solid #ede0d4;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 248, 240, 0.92);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #5a3e32;
+        }
+        .logo span {
+            font-weight: 600;
+            color: #7d5f4b;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .nav-links a {
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #7d5f4b;
+            color: #5a3e32;
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #5a3e32;
+        }
+
+        /* ----- SECTIONS (General) ----- */
+        section {
+            padding: 70px 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #4a372b;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #8b6f5c;
+            margin-bottom: 48px;
+            font-size: 1.05rem;
+        }
+
+        /* ----- HERO ----- */
+        #home {
+            background: linear-gradient(135deg, #f5ebe0 0%, #fff8f0 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 300;
+            color: #3d2c1e;
+            margin-bottom: 8px;
+        }
+        .hero-content h1 strong {
+            font-weight: 600;
+            color: #7d5f4b;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #6b5342;
+            max-width: 600px;
+            margin: 16px auto 32px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: #7d5f4b;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            box-shadow: 0 4px 14px rgba(125, 95, 75, 0.25);
+        }
+        .hero-badge:hover {
+            background: #5e4435;
+            transform: translateY(-3px);
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #4a372b;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #8b6f5c;
+        }
+
+        /* ----- ABOUT ----- */
+        #about {
+            background: #fffdfa;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 16px;
+            color: #4a372b;
+        }
+        .about-text p {
+            margin-bottom: 16px;
+            color: #5a4a3a;
+        }
+        .about-image {
+            background: #e8ddd0;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: #7d5f4b;
+        }
+        .about-image span {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 12px;
+            color: #4a372b;
+        }
+
+        /* ----- PRODUCTS / SERVICES ----- */
+        #products {
+            background: #fcf7f0;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: #fff8f0;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #ede0d4;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            border-color: #b58d7a;
+        }
+        .product-icon {
+            font-size: 3.2rem;
+            margin-bottom: 12px;
+        }
+        .product-card h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #4a372b;
+        }
+        .product-card p {
+            font-size: 0.95rem;
+            color: #6b5342;
+        }
+
+        /* ----- CUSTOM CTA ----- */
+        #custom {
+            background: linear-gradient(135deg, #4a372b, #5e4435);
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+        #custom h2 {
+            font-size: 2.4rem;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+        #custom p {
+            max-width: 600px;
+            margin: 0 auto 28px;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+        .btn-light {
+            background: #fff;
+            color: #4a372b;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-light:hover {
+            background: #f0e3d8;
+            transform: scale(1.03);
+        }
+
+        /* ----- CONTACT (UPDATED with Web3Forms styling) ----- */
+        #contact {
+            background: #fffdfa;
+        }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 16px;
+            color: #4a372b;
+        }
+        .contact-info p {
+            color: #5a4a3a;
+            margin-bottom: 20px;
+        }
+        .contact-info .social-icons {
+            display: flex;
+            gap: 16px;
+            font-size: 1.8rem;
+            color: #7d5f4b;
+        }
+        .contact-info .social-icons a:hover {
+            color: #4a372b;
+        }
+
+        /* --- NEW FORM STYLES (Brand-colored) --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #4a372b;
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dccfc6;
+            border-radius: 10px;
+            background: #fffdfa;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: 0.25s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #b58d7a;
+            box-shadow: 0 0 0 3px rgba(181, 141, 122, 0.15);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+        .btn-submit {
+            background: #7d5f4b;
+            color: #fff;
+            border: none;
+            padding: 15px 28px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.25s;
+        }
+        .btn-submit:hover {
+            background: #5e4435;
+        }
+
+        /* ----- FOOTER ----- */
+        footer {
+            background: #3d2c1e;
+            color: #dccfc6;
+            padding: 32px 0;
+            text-align: center;
+        }
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        footer .social-icons a {
+            color: #dccfc6;
+            transition: 0.2s;
+        }
+        footer .social-icons a:hover {
+            color: #fff;
+        }
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 900px) {
+            .about-grid,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+        }
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 12px;
+                padding: 20px 0 8px;
+                border-top: 1px solid #ede0d4;
+                margin-top: 12px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero-stats {
+                gap: 24px;
+            }
+            section {
+                padding: 50px 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="container nav-container">
+        <div class="logo">Kalakruti<span>_withme</span></div>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#custom">Custom</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="home">
+    <div class="container hero-content">
+        <h1>Handmade <strong>Woolen Rangoli</strong></h1>
+        <p>Beautiful, reusable woolen art for your home, pooja, and festive celebrations. Crafted with love by Mathili Ravindra Mahamuni.</p>
+        <a href="#contact" class="hero-badge"><i class="fas fa-hand-sparkles"></i> Place Your Order</a>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">54</div>
+                <div class="stat-label">Posts</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">229</div>
+                <div class="stat-label">Followers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95</div>
+                <div class="stat-label">Following</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>🧶 The Art of Wool</h3>
+                <p>
+                    <strong>Kalakruti_withme</strong> is the creative vision of <strong>Mathili Ravindra Mahamuni</strong>.
+                    Every piece is meticulously handcrafted using premium wool to create vibrant rangoli designs that
+                    bring warmth and tradition to your space.
+                </p>
+                <p>
+                    We specialize in <strong>custom designs</strong> tailored to your preferences, DIY kits for craft lovers,
+                    and beautiful pooja essentials. Our work is deeply rooted in Indian heritage, yet designed for modern homes.
+                </p>
+                <p style="font-style: italic; color: #7d5f4b;">“Follow for more @kalakruti_withme”</p>
+            </div>
+            <div class="about-image">
+                <i class="fas fa-circle" style="font-size:5rem; opacity:0.3;"></i>
+                <span>🌸 Handmade with Love</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRODUCTS / SERVICES ===== -->
+<section id="products">
+    <div class="container">
+        <h2 class="section-title">Our Offerings</h2>
+        <p class="section-subtitle">From traditional rangoli to custom creations – all handcrafted with pure wool.</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-icon">🟤</div>
+                <h4>Woolen Rangoli</h4>
+                <p>Intricate, reusable woolen rangoli designs perfect for Diwali, Pooja, and everyday decor.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">✂️</div>
+                <h4>Custom Designs</h4>
+                <p>Have a unique vision? We’ll customize colors, patterns, and sizes just for you.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🧵</div>
+                <h4>DIY Kits</h4>
+                <p>Unleash your creativity with our Do-It-Yourself woolen craft kits – perfect for beginners!</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🪔</div>
+                <h4>Pooja Essentials</h4>
+                <p>Handmade woolen items for your sacred space – thoughtful, beautiful, and pure.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CUSTOM CTA ===== -->
+<section id="custom">
+    <div class="container">
+        <h2>✨ Customize Your Design</h2>
+        <p>
+            Tell us your idea – colors, size, theme. We’ll bring it to life with our handcrafted woolen art.
+            <strong>DIY to place your order!</strong>
+        </p>
+        <a href="#contact" class="btn-light"><i class="fas fa-pen-fancy"></i> Start Your Custom Order</a>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">We’d love to hear from you – inquiries, custom orders, or just a hello!</p>
+
+        <div class="contact-wrapper">
+            <!-- Left: info -->
+            <div class="contact-info">
+                <h3>Connect with us</h3>
+                <p>
+                    Reach out via Instagram or drop a message below. We respond within 24 hours.
+                </p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/kalakruti_withme/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="wa.me/919405736074?text=Hi, I need information about Kalakriti’s other products. Could you please share the details, including the available products, categories, features, and pricing?" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                   
+                </div>
+                <p style="margin-top: 32px; font-size: 0.9rem; color: #8b6f5c;">
+                    <i class="fas fa-at"></i> @kalakruti_withme
+                </p>
+            </div>
+
+            <!-- Right: YOUR EXACT WEB3FORMS FORM (with brand styling) -->
+            <div>
+                <form id="contact-form" class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="93fd0998-ceb5-408f-94cf-596aa596763a">
+                    <!-- Honeypot Field (anti-spam) -->
+                    <input type="text" name="honeypot" style="display:none">
+                    <!-- Redirect URL on success -->
+                    <input type="hidden" name="redirect" value="thankyou.html">
+
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="social-icons">
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>
+            &copy; 2026 Kalakruti_withme. Handcrafted with <i class="fas fa-heart" style="color:#b58d7a;"></i> in India.
+            <br />Follow for more @kalakruti_withme
+        </p>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT (only for hamburger menu) ===== -->
+<script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+</script>
+</body>
+</html>
